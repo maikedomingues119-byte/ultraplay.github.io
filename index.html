@@ -133,22 +133,61 @@ const dados = {
 };
 
 function abrir(tipo){
-  const titulos={
-    filmes:"CATÁLOGO DE FILMES",
-    series:"CATÁLOGO DE SÉRIES",
-    canais:"CATEGORIAS DE CANAIS"
+  const titulos = {
+    filmes: "CATÁLOGO DE FILMES",
+    series: "CATÁLOGO DE SÉRIES",
+    canais: "CATEGORIAS DE CANAIS"
   };
-  document.getElementById("titulo").textContent=titulos[tipo];
-  const lista=document.getElementById("items");
-  lista.innerHTML=dados[tipo].map(item=>{
-    const imagem=item.imagem
-      ? `<div class="poster"><img src="${item.imagem}" alt="Pôster de ${item.nome}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;height:100%;display:grid;place-items:center;color:#fff;font-size:14px;padding:8px;text-align:center&quot;>Capa indisponível</div>'"></div>`
-      : `<div class="poster" style="display:grid;place-items:center;font-size:42px">📺</div>`;
-    return `<article class="item">${imagem}<p>${item.nome}<small>${item.ano}</small></p></article>`;
-  }).join("");
-  document.getElementById("modal").style.display="block";
-  document.body.style.overflow="hidden";
+
+  document.getElementById("titulo").textContent = titulos[tipo];
+
+  const lista = document.getElementById("items");
+  lista.innerHTML = "";
+
+  dados[tipo].forEach(item => {
+    const card = document.createElement("article");
+    card.className = "item";
+
+    if (item.imagem) {
+      const poster = document.createElement("div");
+      poster.className = "poster";
+
+      const img = document.createElement("img");
+      img.src = item.imagem;
+      img.alt = item.nome;
+      img.loading = "eager";
+      img.referrerPolicy = "no-referrer";
+      img.style.width = "100%";
+      img.style.height = "100%";
+      img.style.objectFit = "cover";
+
+      img.onerror = function(){
+        poster.textContent = "Capa indisponível";
+      };
+
+      poster.appendChild(img);
+      card.appendChild(poster);
+    } else {
+      const poster = document.createElement("div");
+      poster.className = "poster";
+      poster.textContent = "📺";
+      poster.style.display = "grid";
+      poster.style.placeItems = "center";
+      poster.style.fontSize = "42px";
+      card.appendChild(poster);
+    }
+
+    const texto = document.createElement("p");
+    texto.textContent = item.nome + " - " + item.ano;
+    card.appendChild(texto);
+
+    lista.appendChild(card);
+  });
+
+  document.getElementById("modal").style.display = "block";
+  document.body.style.overflow = "hidden";
 }
+  
 function fechar(){
   document.getElementById("modal").style.display="none";
   document.body.style.overflow="";
