@@ -4,209 +4,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
 <title>Ultra Play | Premium</title>
-
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: #080808;
-  color: white;
-  font-family: Arial, sans-serif;
-}
-
-header {
-  background: #111;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 2px solid #ed172c;
-}
-
-.logo {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.logo span {
-  color: #ed172c;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 18px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: red;
-}
-
-.banner {
-  display: block;
-  width: 94%;
-  max-height: 350px;
-  object-fit: cover;
-  margin: 25px auto;
-  border-radius: 12px;
-  box-shadow: 0 0 25px #ed172c;
-}
-
-.intro {
-  text-align: center;
-  padding: 25px 15px;
-}
-
-h1 {
-  color: #ff2638;
-  margin-bottom: 12px;
-}
-
-section {
-  padding: 35px 5%;
-  text-align: center;
-}
-
-.cards, .plans {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 18px;
-  margin-top: 25px;
-}
-
-.card, .plan {
-  background: #191919;
-  border: 1px solid #a90016;
-  padding: 25px 18px;
-  border-radius: 12px;
-}
-
-.card {
-  cursor: pointer;
-  transition: .3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 18px red;
-}
-
-button {
-  background: #ed172c;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-.price {
-  font-size: 35px;
-  color: #ff293d;
-  font-weight: bold;
-  margin: 15px;
-}
-
-.test {
-  background: linear-gradient(120deg, #700010, #ed172c);
-  border-radius: 15px;
-  padding: 35px 15px;
-  margin: 30px 0;
-}
-
-.whatsapp {
-  display: inline-block;
-  background: #16a34a;
-  color: white;
-  text-decoration: none;
-  padding: 14px 22px;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-top: 15px;
-}
-
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #888;
-  border-top: 1px solid #333;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #000e;
-  padding: 20px;
-  overflow-y: auto;
-  z-index: 10;
-}
-
-.modal-content {
-  background: #171717;
-  border: 1px solid red;
-  border-radius: 12px;
-  padding: 20px;
-  max-width: 800px;
-  margin: 40px auto;
-}
-
-.items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.item {
-  background: #252525;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.poster {
-  height: 120px;
-  display: grid;
-  place-items: center;
-  font-size: 40px;
-  background: linear-gradient(135deg, #600010, #222);
-}
-
-.item p {
-  padding: 12px 5px;
-  font-size: 13px;
-}
-
-.close {
-  float: right;
-}
-
-@media(max-width:500px) {
-  .logo {
-    font-size: 26px;
-  }
-  nav {
-    gap: 12px;
-    font-size: 13px;
-  }
-}
+:root{--red:#ed172c;--dark:#080808;--panel:#171717;--muted:#aaa}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:#fff;font-family:Arial,sans-serif}
+header{background:#111;padding:18px 16px;text-align:center;border-bottom:2px solid var(--red);position:sticky;top:0;z-index:5}
+.logo{font-size:32px;font-weight:900;letter-spacing:1px}.logo span{color:var(--red)}
+nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:14px}
+nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:14px}
+nav a:hover{color:var(--red)}
+.banner{display:block;width:94%;max-height:350px;object-fit:cover;margin:24px auto;border-radius:12px;box-shadow:0 0 25px #ed172c66}
+.intro{text-align:center;padding:22px 15px}
+.intro h1,section h2{color:#ff2638;margin-bottom:12px}
+.intro p,.sub{color:#ccc}
+section{padding:35px 5%;text-align:center}
+.cards,.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-top:24px}
+.card,.plan{background:var(--panel);border:1px solid #790014;padding:24px 16px;border-radius:12px}
+.card{cursor:pointer;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 0 18px #ed172c77}
+button,.cta{background:var(--red);color:#fff;border:0;padding:12px 20px;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:15px;text-decoration:none;display:inline-block}
+.price{font-size:34px;color:#ff293d;font-weight:bold;margin:14px}
+.test{background:linear-gradient(120deg,#700010,#ed172c);border-radius:15px;padding:34px 15px;margin:20px 0}
+.whatsapp{background:#16a34a}
+footer{text-align:center;padding:25px;color:#888;border-top:1px solid #333;font-size:13px}
+.modal{display:none;position:fixed;inset:0;background:#000e;padding:16px;overflow-y:auto;z-index:10}
+.modal-content{background:#171717;border:1px solid var(--red);border-radius:12px;padding:20px;max-width:1000px;margin:24px auto}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.close{margin:0;padding:9px 13px}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:14px}
+.item{background:#252525;border-radius:8px;overflow:hidden;text-align:left}
+.poster{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,#600010,#222);overflow:hidden}
+.poster img{width:100%;height:100%;object-fit:cover;display:block}
+.item p{padding:10px 8px;font-size:13px;font-weight:bold;min-height:48px}
+.item small{display:block;color:#aaa;font-weight:normal;margin-top:4px}
+.note{color:#aaa;font-size:12px;margin-top:18px}
+@media(max-width:500px){.logo{font-size:26px}nav{gap:13px;font-size:12px}.banner{margin:16px auto}}
 </style>
 </head>
-
 <body>
-
 <header>
   <div class="logo">ULTRA<span>PLAY</span></div>
   <nav>
@@ -216,11 +54,7 @@ footer {
   </nav>
 </header>
 
-<img
-  class="banner"
-  src="./file_00000000a0820e846a5c2b76f3223.png"
-  alt="Banner Ultra Play"
->
+<img class="banner" src="./file_00000000a0820e846a5c2b76f3223.png" alt="Banner Ultra Play" onerror="this.style.display='none'">
 
 <div class="intro">
   <h1>SEU ENTRETENIMENTO COMEÇA AQUI!</h1>
@@ -228,163 +62,103 @@ footer {
 </div>
 
 <section id="catalogos">
-  <h1>NOSSOS CATÁLOGOS</h1>
-
+  <h2>NOSSOS CATÁLOGOS</h2>
+  <p class="sub">Escolha uma categoria para explorar.</p>
   <div class="cards">
-
-    <div class="card" onclick="abrir('filmes')">
-      <h2>🎬 Filmes</h2>
-      <p>Explore nosso catálogo de filmes.</p>
-      <button>Ver filmes</button>
-    </div>
-
-    <div class="card" onclick="abrir('series')">
-      <h2>📺 Séries</h2>
-      <p>Conheça nosso catálogo de séries.</p>
-      <button>Ver séries</button>
-    </div>
-
-    <div class="card" onclick="abrir('canais')">
-      <h2>📡 Canais ao vivo</h2>
-      <p>Veja nossa demonstração de canais.</p>
-      <button>Ver canais</button>
-    </div>
-
+    <div class="card" onclick="abrir('filmes')"><h3>🎬 Filmes</h3><p>Confira alguns filmes em destaque.</p><button>Ver filmes</button></div>
+    <div class="card" onclick="abrir('series')"><h3>📺 Séries</h3><p>Conheça títulos de séries.</p><button>Ver séries</button></div>
+    <div class="card" onclick="abrir('canais')"><h3>📡 Canais</h3><p>Veja categorias demonstrativas.</p><button>Ver canais</button></div>
   </div>
 </section>
 
 <section id="planos">
-  <h1>PLANOS E VALORES</h1>
-
+  <h2>PLANOS E VALORES</h2>
   <div class="plans">
-
-    <div class="plan">
-      <h2>1 TELA</h2>
-      <div class="price">R$ 30</div>
-    </div>
-
-    <div class="plan">
-      <h2>2 TELAS</h2>
-      <div class="price">R$ 50</div>
-    </div>
-
-    <div class="plan">
-      <h2>3 TELAS</h2>
-      <div class="price">R$ 70</div>
-    </div>
-
+    <div class="plan"><h3>1 TELA</h3><div class="price">R$ 30</div></div>
+    <div class="plan"><h3>2 TELAS</h3><div class="price">R$ 50</div></div>
+    <div class="plan"><h3>3 TELAS</h3><div class="price">R$ 70</div></div>
   </div>
 </section>
 
 <section id="teste">
   <div class="test">
-    <h1>TESTE GRÁTIS POR 6 HORAS!</h1>
+    <h2>TESTE GRÁTIS POR 6 HORAS!</h2>
     <p>Venha conhecer a Ultra Play.</p>
-
-    <a
-      class="whatsapp"
-      href="https://wa.me/5511915145364?text=Quero%20meu%20teste%20gr%C3%A1tis"
-      target="_blank"
-      rel="noopener"
-    >
-      QUERO MEU TESTE GRÁTIS
-    </a>
-
-    <h3 style="margin-top:20px">
-      WhatsApp: (11) 91514-5364
-    </h3>
+    <a class="cta whatsapp" href="https://wa.me/5511915145364?text=Quero%20meu%20teste%20gr%C3%A1tis" target="_blank" rel="noopener">QUERO MEU TESTE GRÁTIS</a>
+    <h3 style="margin-top:20px">WhatsApp: (11) 91514-5364</h3>
   </div>
 </section>
 
-<footer>
-  © 2026 Ultra Play - Todos os direitos reservados.
-</footer>
+<footer>© 2026 Ultra Play - Todos os direitos reservados.</footer>
 
-<div class="modal" id="modal">
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="titulo" onclick="fecharFora(event)">
   <div class="modal-content">
-
-    <button class="close" onclick="fechar()">FECHAR ✖</button>
-
-    <h2 id="titulo"></h2>
-
+    <div class="modal-head">
+      <h2 id="titulo"></h2>
+      <button class="close" onclick="fechar()">FECHAR ✖</button>
+    </div>
     <div class="items" id="items"></div>
-
-    <p style="margin-top:20px;color:#aaa">
-      Catálogo demonstrativo da Ultra Play.
-    </p>
-
+    <p class="note">Catálogo demonstrativo. As capas são carregadas de um serviço externo e precisam de internet.</p>
   </div>
 </div>
 
 <script>
 const dados = {
   filmes: [
-    "Aventura nas Estrelas",
-    "Missão Extrema",
-    "Riso em Família",
-    "O Último Mistério",
-    "Reino Encantado",
-    "Além do Horizonte",
-    "Velocidade Total",
-    "Segredos do Oceano"
+    {nome:"Os Vingadores",ano:"2012",imagem:"https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg"},
+    {nome:"Jurassic Park",ano:"1993",imagem:"https://image.tmdb.org/t/p/w500/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg"},
+    {nome:"Toy Story",ano:"1995",imagem:"https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"},
+    {nome:"The Batman",ano:"2022",imagem:"https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg"},
+    {nome:"Duna: Parte Dois",ano:"2024",imagem:"https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"},
+    {nome:"Interestelar",ano:"2014",imagem:"https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MIDLxR6i.jpg"},
+    {nome:"Coringa",ano:"2019",imagem:"https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"},
+    {nome:"Pantera Negra",ano:"2018",imagem:"https://image.tmdb.org/t/p/w500/uxzzxijgPIY7sla0VJ5rau7Yf.jpg"}
   ],
-
   series: [
-    "Cidade em Segredo",
-    "Equipe de Resgate",
-    "Mundos Paralelos",
-    "Conexão Perigosa",
-    "Cozinha de Campeões",
-    "Arquivo Sombrio",
-    "Laços de Família",
-    "Planeta Selvagem"
+    {nome:"Stranger Things",ano:"Série"},
+    {nome:"Wandinha",ano:"Série"},
+    {nome:"The Last of Us",ano:"Série"},
+    {nome:"Breaking Bad",ano:"Série"},
+    {nome:"Round 6",ano:"Série"},
+    {nome:"The Witcher",ano:"Série"}
   ],
-
   canais: [
-    "Canal Notícias",
-    "Esporte Total",
-    "Cinema Plus",
-    "Mundo Kids",
-    "Novelas Brasil",
-    "Música Mix",
-    "Vida e Saúde",
-    "Cultura 24h"
+    {nome:"Notícias",ano:"Categoria"},
+    {nome:"Esportes",ano:"Categoria"},
+    {nome:"Filmes",ano:"Categoria"},
+    {nome:"Infantil",ano:"Categoria"},
+    {nome:"Novelas",ano:"Categoria"},
+    {nome:"Música",ano:"Categoria"}
   ]
 };
 
-function abrir(tipo) {
-
-  const titulos = {
-    filmes: "CATÁLOGO DE FILMES",
-    series: "CATÁLOGO DE SÉRIES",
-    canais: "CANAIS AO VIVO"
+function abrir(tipo){
+  const titulos={
+    filmes:"CATÁLOGO DE FILMES",
+    series:"CATÁLOGO DE SÉRIES",
+    canais:"CATEGORIAS DE CANAIS"
   };
-
-  document.getElementById("titulo").textContent =
-    titulos[tipo];
-
-  const icone = tipo === "filmes" ? "🎬" :
-                tipo === "series" ? "📺" : "📡";
-
-  document.getElementById("items").innerHTML =
-    dados[tipo].map(nome => `
-      <div class="item">
-        <div class="poster">${icone}</div>
-        <p>${nome}</p>
-      </div>
-    `).join("");
-
-  document.getElementById("modal").style.display = "block";
+  document.getElementById("titulo").textContent=titulos[tipo];
+  const lista=document.getElementById("items");
+  lista.innerHTML=dados[tipo].map(item=>{
+    const imagem=item.imagem
+      ? `<div class="poster"><img src="${item.imagem}" alt="Pôster de ${item.nome}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;height:100%;display:grid;place-items:center;color:#fff;font-size:14px;padding:8px;text-align:center&quot;>Capa indisponível</div>'"></div>`
+      : `<div class="poster" style="display:grid;place-items:center;font-size:42px">📺</div>`;
+    return `<article class="item">${imagem}<p>${item.nome}<small>${item.ano}</small></p></article>`;
+  }).join("");
+  document.getElementById("modal").style.display="block";
+  document.body.style.overflow="hidden";
 }
-
-function fechar() {
-  document.getElementById("modal").style.display = "none";
+function fechar(){
+  document.getElementById("modal").style.display="none";
+  document.body.style.overflow="";
 }
-
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") fechar();
+function fecharFora(event){
+  if(event.target.id==="modal")fechar();
+}
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")fechar();
 });
 </script>
-
 </body>
 </html>
