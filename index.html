@@ -4,200 +4,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080808">
-<title>Ultra Play | Premium</title>
+<meta name="theme-color" content="#080303">
+<title>ULTRA PLAY | Premium</title>
 <style>
-:root{--red:#ed172c;--dark:#080808;--panel:#171717;--muted:#aaa}
+:root{--red:#ff1717;--gold:#ffd45a;--bg:#080303}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--dark);color:#fff;font-family:Arial,sans-serif}
-header{background:#111;padding:18px 16px;text-align:center;border-bottom:2px solid var(--red);position:sticky;top:0;z-index:5}
-.logo{font-size:32px;font-weight:900;letter-spacing:1px}.logo span{color:var(--red)}
-nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:14px}
-nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:14px}
+body{background:var(--bg);color:white;font-family:Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 5%,#650b0b,transparent 55%),linear-gradient(135deg,#080202,#160404,#050505)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='86'%3E%3Cpath d='M25 1 50 15v28L25 57 1 43V15zM75 29l24 14v28L75 85 50 71V43z' fill='none' stroke='%23ff2222' stroke-width='1.5'/%3E%3C/svg%3E");background-size:100px 86px;animation:honey 25s linear infinite}
+@keyframes honey{to{background-position:200px 172px}}
+a{color:inherit;text-decoration:none}
+.container{width:min(1150px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#090303ed;border-bottom:1px solid #ff171755;backdrop-filter:blur(15px)}
+.nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:29px;font-weight:1000;font-style:italic;letter-spacing:-2px;text-shadow:0 0 15px red}
+.logo span{color:var(--red)}
+nav{display:flex;gap:20px}
+nav a{font-size:12px;font-weight:bold}
 nav a:hover{color:var(--red)}
-.banner{display:block;width:94%;max-height:350px;object-fit:cover;margin:24px auto;border-radius:12px;box-shadow:0 0 25px #ed172c66}
-.intro{text-align:center;padding:22px 15px}
-.intro h1,section h2{color:#ff2638;margin-bottom:12px}
-.intro p,.sub{color:#ccc}
-section{padding:35px 5%;text-align:center}
-.cards,.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-top:24px}
-.card,.plan{background:var(--panel);border:1px solid #790014;padding:24px 16px;border-radius:12px}
-.card{cursor:pointer;transition:.2s}
-.card:hover{transform:translateY(-4px);box-shadow:0 0 18px #ed172c77}
-button,.cta{background:var(--red);color:#fff;border:0;padding:12px 20px;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:15px;text-decoration:none;display:inline-block}
-.price{font-size:34px;color:#ff293d;font-weight:bold;margin:14px}
-.test{background:linear-gradient(120deg,#700010,#ed172c);border-radius:15px;padding:34px 15px;margin:20px 0}
-.whatsapp{background:#16a34a}
-footer{text-align:center;padding:25px;color:#888;border-top:1px solid #333;font-size:13px}
-.modal{display:none;position:fixed;inset:0;background:#000e;padding:16px;overflow-y:auto;z-index:10}
-.modal-content{background:#171717;border:1px solid var(--red);border-radius:12px;padding:20px;max-width:1000px;margin:24px auto}
-.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-.close{margin:0;padding:9px 13px}
-.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:14px}
-.item{background:#252525;border-radius:8px;overflow:hidden;text-align:left}
-.poster{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,#600010,#222);overflow:hidden}
-.poster img{width:100%;height:100%;object-fit:cover;display:block}
-.item p{padding:10px 8px;font-size:13px;font-weight:bold;min-height:48px}
-.item small{display:block;color:#aaa;font-weight:normal;margin-top:4px}
-.note{color:#aaa;font-size:12px;margin-top:18px}
-@media(max-width:500px){.logo{font-size:26px}nav{gap:13px;font-size:12px}.banner{margin:16px auto}}
+.hero{min-height:570px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:75px 15px;overflow:hidden}
+.hero:before{content:"";position:absolute;width:460px;height:460px;border-radius:50%;background:#ff000025;filter:blur(90px);animation:pulse 4s infinite alternate}
+@keyframes pulse{to{transform:scale(1.3);opacity:.5}}
+.hero-content{position:relative;z-index:1}
+.tag{display:inline-block;border:1px solid #ff3333;padding:10px 18px;border-radius:30px;color:#ff7777;font-size:11px;letter-spacing:3px;font-weight:bold}
+.hero h1{font-size:clamp(65px,12vw,125px);line-height:.86;font-weight:1000;font-style:italic;letter-spacing:-7px;margin:30px 0}
+.hero h1 .white{color:white;text-shadow:0 0 20px #fff8}
+.hero h1 .red{color:var(--red);text-shadow:0 0 15px red,0 0 45px red}
+.hero p{max-width:650px;margin:0 auto 30px;color:#d3c4c4;line-height:1.7;font-size:17px}
+.btn{display:inline-block;padding:15px 24px;background:linear-gradient(120deg,#ff3333,#990000);border:1px solid #ff5555;border-radius:8px;font-size:12px;font-weight:900;box-shadow:0 0 18px #ff171755;transition:.25s}
+.btn:hover{transform:translateY(-4px);box-shadow:0 0 30px red}
+.section{padding:75px 0}
+.heading{text-align:center;margin-bottom:38px}
+.heading small{color:var(--red);letter-spacing:4px;font-weight:bold}
+.heading h2{font-size:clamp(29px,6vw,45px);text-transform:uppercase;margin:12px 0}
+.heading h2 span{color:var(--red)}
+.heading p{color:#c5baba;line-height:1.6}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.feature{background:linear-gradient(140deg,#260707,#0d0505);border:1px solid #ff292955;border-radius:15px;padding:28px 15px;text-align:center;transition:.3s}
+.feature:hover{transform:translateY(-7px);border-color:red;box-shadow:0 0 22px #ff171733}
+.feature .emoji{font-size:38px}
+.feature h3{margin:14px 0 8px}
+.feature p{color:#bdaaaa;font-size:13px}
+.catalog{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.poster{min-height:230px;border-radius:13px;overflow:hidden;position:relative;display:flex;align-items:flex-end;padding:17px;background:linear-gradient(145deg,#680c0c,#170505 55%,#080808);border:1px solid #ff333355;transition:.3s}
+.poster:nth-child(2){background:linear-gradient(145deg,#17315b,#090a17)}
+.poster:nth-child(3){background:linear-gradient(145deg,#67420d,#180b05)}
+.poster:nth-child(4){background:linear-gradient(145deg,#3c155e,#100516)}
+.poster:nth-child(5){background:linear-gradient(145deg,#164d42,#06110e)}
+.poster:nth-child(6){background:linear-gradient(145deg,#63300c,#180904)}
+.poster:nth-child(7){background:linear-gradient(145deg,#172d61,#080b17)}
+.poster:nth-child(8){background:linear-gradient(145deg,#641020,#16050a)}
+.poster:before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 25%,#000e)}
+.poster:hover{transform:scale(1.035);border-color:red}
+.poster div{position:relative;z-index:1}
+.poster small{color:#ff7777;font-size:10px;letter-spacing:2px}
+.poster h3{font-size:20px;margin-top:7px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan{text-align:center;padding:35px 20px;background:linear-gradient(145deg,#250707,#0b0303);border:1px solid #ff333366;border-radius:17px;box-shadow:0 0 25px #ff000011}
+.plan.popular{border:2px solid var(--red);box-shadow:0 0 28px #ff171744;transform:translateY(-8px)}
+.plan .label{color:var(--gold);font-size:11px;letter-spacing:2px;font-weight:bold}
+.plan h3{font-size:23px;margin:15px 0}
+.price{font-size:43px;color:var(--gold);font-weight:1000;text-shadow:0 0 15px #ffb70055}
+.price small{font-size:15px}
+.plan p{color:#c7b5b5;margin:12px 0 24px;font-size:14px}
+.trial{margin-top:35px;padding:40px 20px;text-align:center;background:linear-gradient(120deg,#4b0808,#170303);border:1px solid red;border-radius:17px;box-shadow:0 0 30px #ff171733}
+.trial h2{color:var(--gold);font-size:clamp(25px,5vw,40px)}
+.trial p{color:#ddd;margin:15px 0 25px}
+.contact{text-align:center;padding:60px 20px;background:radial-gradient(ellipse,#420808,#100303 75%);border:1px solid #ff222255;border-radius:20px}
+.contact h2{font-size:35px;margin-bottom:15px}
+.contact h2 span{color:var(--red)}
+.contact p{color:#d2baba;margin-bottom:25px}
+.wa{position:fixed;right:22px;bottom:22px;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#20c866;box-shadow:0 0 20px #20c86688;z-index:20;transition:.3s}
+.wa:hover{transform:scale(1.1)}
+.wa svg{width:36px;height:36px;fill:white}
+footer{text-align:center;padding:28px;color:#887777;font-size:12px}
+@media(max-width:750px){.features{grid-template-columns:repeat(2,1fr)}.catalog{grid-template-columns:repeat(2,1fr)}.plans{grid-template-columns:1fr}.plan.popular{transform:none}nav{gap:10px}.hero h1{letter-spacing:-4px}}
+@media(max-width:420px){.logo{font-size:22px}nav{gap:8px}nav a{font-size:10px}.poster{min-height:180px}}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">ULTRA<span>PLAY</span></div>
+ <div class="container nav">
+  <a href="#inicio" class="logo">ULTRA <span>PLAY</span></a>
   <nav>
-    <a href="#catalogos">Catálogos</a>
-    <a href="#planos">Planos</a>
-    <a href="#teste">Teste grátis</a>
+   <a href="#catalogo">CATÁLOGO</a>
+   <a href="#planos">PLANOS</a>
+   <a href="#teste">TESTE GRÁTIS</a>
   </nav>
+ </div>
 </header>
-
-<img class="banner" src="./file_00000000a0820e846a5c2b76f3223.png" alt="Banner Ultra Play" onerror="this.style.display='none'">
-
-<div class="intro">
-  <h1>SEU ENTRETENIMENTO COMEÇA AQUI!</h1>
-  <p>Filmes, séries e canais em um só lugar.</p>
-</div>
-
-<section id="catalogos">
-  <h2>NOSSOS CATÁLOGOS</h2>
-  <p class="sub">Escolha uma categoria para explorar.</p>
-  <div class="cards">
-    <div class="card" onclick="abrir('filmes')"><h3>🎬 Filmes</h3><p>Confira alguns filmes em destaque.</p><button>Ver filmes</button></div>
-    <div class="card" onclick="abrir('series')"><h3>📺 Séries</h3><p>Conheça títulos de séries.</p><button>Ver séries</button></div>
-    <div class="card" onclick="abrir('canais')"><h3>📡 Canais</h3><p>Veja categorias demonstrativas.</p><button>Ver canais</button></div>
-  </div>
+<main>
+<section class="hero" id="inicio">
+ <div class="hero-content">
+  <div class="tag">ENTRETENIMENTO PREMIUM</div>
+  <h1><span class="white">ULTRA</span><br><span class="red">PLAY</span></h1>
+  <p>Seu entretenimento em um só lugar! Filmes, séries, canais ao vivo, esportes e muito mais para aproveitar.</p>
+  <a href="#planos" class="btn">DESCUBRA NOSSOS PLANOS →</a>
+ </div>
 </section>
-
-<section id="planos">
-  <h2>PLANOS E VALORES</h2>
-  <div class="plans">
-    <div class="plan"><h3>1 TELA</h3><div class="price">R$ 30</div></div>
-    <div class="plan"><h3>2 TELAS</h3><div class="price">R$ 50</div></div>
-    <div class="plan"><h3>3 TELAS</h3><div class="price">R$ 70</div></div>
-  </div>
+<section class="section container">
+ <div class="heading">
+  <small>EXPERIÊNCIA COMPLETA</small>
+  <h2>UM MUNDO DE <span>ENTRETENIMENTO</span></h2>
+  <p>Opções para todos os gostos e momentos.</p>
+ </div>
+ <div class="features">
+  <div class="feature"><div class="emoji">🎬</div><h3>Filmes</h3><p>Histórias para todos os estilos.</p></div>
+  <div class="feature"><div class="emoji">🍿</div><h3>Séries</h3><p>Encontre sua próxima maratona.</p></div>
+  <div class="feature"><div class="emoji">📺</div><h3>Canais ao vivo</h3><p>Programação para acompanhar.</p></div>
+  <div class="feature"><div class="emoji">⚽</div><h3>Esportes</h3><p>Emoção para torcer e vibrar.</p></div>
+  <div class="feature"><div class="emoji">🧸</div><h3>Infantil</h3><p>Diversão para a criançada.</p></div>
+  <div class="feature"><div class="emoji">✨</div><h3>Muito mais</h3><p>Entretenimento para todos.</p></div>
+ </div>
 </section>
-
-<section id="teste">
-  <div class="test">
-    <h2>TESTE GRÁTIS POR 6 HORAS!</h2>
-    <p>Venha conhecer a Ultra Play.</p>
-    <a class="cta whatsapp" href="https://wa.me/5511915145364?text=Quero%20meu%20teste%20gr%C3%A1tis" target="_blank" rel="noopener">QUERO MEU TESTE GRÁTIS</a>
-    <h3 style="margin-top:20px">WhatsApp: (11) 91514-5364</h3>
-  </div>
+<section class="section container" id="catalogo">
+ <div class="heading">
+  <small>ESCOLHA O QUE ASSISTIR</small>
+  <h2>DESTAQUES DO <span>CATÁLOGO</span></h2>
+  <p>Conheça as categorias disponíveis na ULTRA PLAY.</p>
+ </div>
+ <div class="catalog">
+  <div class="poster"><div><small>ULTRA PLAY</small><h3>FILMES</h3></div></div>
+  <div class="poster"><div><small>ULTRA PLAY</small><h3>SÉRIES</h3></div></div>
+  <div class="poster"><div><small>ULTRA PLAY</small><h3>AÇÃO</h3></div></div>
+  <div class="poster"><div><small>ULTRA PLAY</small><h3>AVENTURA</h3></div></div>
+  <div class="poster"><div><small>ULTRA PLAY</small><h3>DRAMA</h3></div></div>
+  <div class="poster"><div><small>ULTRA PLAY</small><h3>COMÉDIA</h3></div></div>
+  <div class="poster"><div><small>ULTRA PLAY</small><h3>ESPORTES</h3></div></div>
+  <div class="poster"><div><small>ULTRA PLAY</small><h3>INFANTIL</h3></div></div>
+ </div>
 </section>
-
-<footer>© 2026 Ultra Play - Todos os direitos reservados.</footer>
-
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="titulo" onclick="fecharFora(event)">
-  <div class="modal-content">
-    <div class="modal-head">
-      <h2 id="titulo"></h2>
-      <button class="close" onclick="fechar()">FECHAR ✖</button>
-    </div>
-    <div class="items" id="items"></div>
-    <p class="note">Catálogo demonstrativo. As capas são carregadas de um serviço externo e precisam de internet.</p>
+<section class="section container" id="planos">
+ <div class="heading">
+  <small>ESCOLHA SUA EXPERIÊNCIA</small>
+  <h2>NOSSOS <span>PLANOS</span></h2>
+  <p>Escolha a opção ideal para você.</p>
+ </div>
+ <div class="plans">
+  <div class="plan">
+   <div class="label">PLANO INDIVIDUAL</div>
+   <h3>1 TELA</h3>
+   <div class="price">R$ 30<small>,00</small></div>
+   <p>Acesso para 1 tela</p>
+   <a class="btn" href="https://wa.me/5511915145364?text=Ol%C3%A1%2C%20boa%20noite%21%20Gostaria%20de%20assinar%20esse%20plano%20de%2030%20reais.">ASSINAR AGORA</a>
   </div>
-</div>
-
-<script>
-const dados = {
-  filmes: [
-    {nome:"Os Vingadores",ano:"2012",imagem:"https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg"},
-    {nome:"Jurassic Park",ano:"1993",imagem:"https://image.tmdb.org/t/p/w500/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg"},
-    {nome:"Toy Story",ano:"1995",imagem:"https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"},
-    {nome:"The Batman",ano:"2022",imagem:"https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg"},
-    {nome:"Duna: Parte Dois",ano:"2024",imagem:"https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"},
-    {nome:"Interestelar",ano:"2014",imagem:"https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MIDLxR6i.jpg"},
-    {nome:"Coringa",ano:"2019",imagem:"https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"},
-    {nome:"Pantera Negra",ano:"2018",imagem:"./pantera-negra.jpg"}
-  ],
-  series: [
-    {nome:"Stranger Things",ano:"Série"},
-    {nome:"Wandinha",ano:"Série"},
-    {nome:"The Last of Us",ano:"Série"},
-    {nome:"Breaking Bad",ano:"Série"},
-    {nome:"Round 6",ano:"Série"},
-    {nome:"The Witcher",ano:"Série"}
-  ],
-  canais: [
-    {nome:"Notícias",ano:"Categoria"},
-    {nome:"Esportes",ano:"Categoria"},
-    {nome:"Filmes",ano:"Categoria"},
-    {nome:"Infantil",ano:"Categoria"},
-    {nome:"Novelas",ano:"Categoria"},
-    {nome:"Música",ano:"Categoria"}
-  ]
-};
-
-function abrir(tipo){
-  const titulos = {
-    filmes: "CATÁLOGO DE FILMES",
-    series: "CATÁLOGO DE SÉRIES",
-    canais: "CATEGORIAS DE CANAIS"
-  };
-
-  document.getElementById("titulo").textContent = titulos[tipo];
-
-  const lista = document.getElementById("items");
-  lista.innerHTML = "";
-
-  dados[tipo].forEach(item => {
-    const card = document.createElement("article");
-    card.className = "item";
-
-    if (item.imagem) {
-      const poster = document.createElement("div");
-      poster.className = "poster";
-
-      const img = document.createElement("img");
-      img.src = item.imagem;
-      img.alt = item.nome;
-      img.loading = "eager";
-      img.referrerPolicy = "no-referrer";
-      img.style.width = "100%";
-      img.style.height = "100%";
-      img.style.objectFit = "cover";
-
-      img.onerror = function(){
-        poster.textContent = "Capa indisponível";
-      };
-
-      poster.appendChild(img);
-      card.appendChild(poster);
-    } else {
-      const poster = document.createElement("div");
-      poster.className = "poster";
-      poster.textContent = "📺";
-      poster.style.display = "grid";
-      poster.style.placeItems = "center";
-      poster.style.fontSize = "42px";
-      card.appendChild(poster);
-    }
-
-    const texto = document.createElement("p");
-    texto.textContent = item.nome + " - " + item.ano;
-    card.appendChild(texto);
-
-    lista.appendChild(card);
-  });
-
-  document.getElementById("modal").style.display = "block";
-  document.body.style.overflow = "hidden";
-}
-  
-function fechar(){
-  document.getElementById("modal").style.display="none";
-  document.body.style.overflow="";
-}
-function fecharFora(event){
-  if(event.target.id==="modal")fechar();
-}
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape")fechar();
-});
-</script>
+  <div class="plan popular">
+   <div class="label">⭐ MAIS ESCOLHIDO</div>
+   <h3>2 TELAS</h3>
+   <div class="price">R$ 50<small>,00</small></div>
+   <p>Acesso para 2 telas</p>
+   <a class="btn" href="https://wa.me/5511915145364?text=Ol%C3%A1%2C%20boa%20noite%21%20Gostaria%20de%20assinar%20esse%20plano%20de%2050%20reais.">ASSINAR AGORA</a>
+  </div>
+  <div class="plan">
+   <div class="label">PLANO COMPLETO</div>
+   <h3>3 TELAS</h3>
+   <div class="price">R$ 70<small>,00</small></div>
+   <p>Acesso para 3 telas</p>
+   <a class="btn" href="https://wa.me/5511915145364?text=Ol%C3%A1%2C%20boa%20noite%21%20Gostaria%20de%20assinar%20esse%20plano%20de%2070%20reais.">ASSINAR AGORA</a>
+  </div>
+ </div>
+ <div class="trial" id="teste">
+  <h2>🎁 EXPERIMENTE GRÁTIS!</h2>
+  <p>Peça seu teste gratuito de 6 horas e conheça a ULTRA PLAY.</p>
+  <a class="btn" href="https://wa.me/5511915145364?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20teste%20gr%C3%A1tis%20de%20seis%20horas.%20Como%20funciona%3F">QUERO MEU TESTE GRÁTIS</a>
+ </div>
+</section>
+<section class="section container">
+ <div class="contact">
+  <h2>VEM PARA A <span>ULTRA PLAY</span></h2>
+  <p>Entre em contato e descubra sua próxima experiência de entretenimento.</p>
+  <a class="btn" href="https://wa.me/5511915145364">FALE CONOSCO PELO WHATSAPP</a>
+ </div>
+</section>
+</main>
+<a class="wa" href="https://wa.me/5511915145364" target="_blank" rel="noopener" aria-label="WhatsApp">
+ <svg viewBox="0 0 32 32">
+  <path d="M16 .8A15 15 0 0 0 3.1 23.4L1 31l7.8-2A15 15 0 1 0 16 .8zm0 27.5a12.4 12.4 0 0 1-6.3-1.7l-.5-.3-4.6 1.2 1.2-4.5-.3-.5A12.4 12.4 0 1 1 16 28.3zm6.8-9.3c-.4-.2-2.3-1.1-2.7-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/>
+ </svg>
+</a>
+<footer>© 2026 ULTRA PLAY — Todos os direitos reservados.</footer>
 </body>
 </html>
