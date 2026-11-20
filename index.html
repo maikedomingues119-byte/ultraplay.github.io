@@ -1,4 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botão Entrar - UltraPlay</title>
 
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #080303;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.login-area {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.login-trigger, .auth-submit {
+  background: linear-gradient(120deg, #ff3333, #990000);
+  color: white;
+  border: 1px solid #ff5555;
+  border-radius: 8px;
+  padding: 13px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 18px #ff171755;
+}
+
+.auth-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000c;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.auth-overlay.open {
+  display: flex;
+}
+
+.auth-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 30px 25px;
+  background: linear-gradient(145deg, #260707, #090303);
+  border: 1px solid #ff3333;
+  border-radius: 17px;
+  box-shadow: 0 0 35px #ff171755;
+}
+
+.auth-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.auth-card h2 {
+  text-align: center;
+}
+
+.auth-sub {
+  text-align: center;
+  color: #c7b5b5;
+  font-size: 13px;
+}
+
+.auth-card label {
+  display: block;
+  font-size: 12px;
+  margin: 13px 0 6px;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #713030;
+  border-radius: 8px;
+  background: #120707;
+  color: white;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.auth-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.auth-links button {
+  border: none;
+  background: none;
+  color: #ff7777;
+  cursor: pointer;
+}
+
+.auth-message {
+  color: #ffd45a;
+  font-size: 12px;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-area">
+  <button class="login-trigger" id="openLogin">ENTRAR</button>
+</div>
+
+<div class="auth-overlay" id="authOverlay">
+  <section class="auth-card">
+
+    <button class="auth-close" id="closeAuth">×</button>
+
+    <h2 id="authTitle">ENTRAR NA ULTRA PLAY</h2>
+    <p class="auth-sub" id="authSubtitle">Acesse sua conta</p>
+
+    <form id="authForm">
+
+      <div id="registerFields" class="hidden">
+        <label>Nome</label>
+        <input id="firstName" maxlength="60">
+
+        <label>Sobrenome</label>
+        <input id="lastName" maxlength="60">
+      </div>
+
+      <label>E-mail</label>
+      <input id="email" type="email" required>
+
+      <label>Senha</label>
+      <input id="password" type="password" minlength="6" required>
+
+      <button class="auth-submit" id="submitButton">
+        ENTRAR
+      </button>
+
+    </form>
+
+    <div class="auth-links" id="loginLinks">
+      <button id="forgotPassword" type="button">
+        Esqueci minha senha
+      </button>
+
+      <button id="showRegister" type="button">
+        Cadastrar
+      </button>
+    </div>
+
+    <div class="auth-links hidden" id="registerLinks">
+      <button id="showLogin" type="button">
+        Já tenho conta — Entrar
+      </button>
+    </div>
+
+    <p class="auth-message" id="message"></p>
+
+  </section>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  updateProfile
+} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCh04ZVIuR2k0Lfr66pZrBhETqwhpNoxdI",
+  authDomain: "ultra-play-4f7b3.firebaseapp.com",
+  projectId: "ultra-play-4f7b3",
+  storageBucket: "ultra-play-4f7b3.firebasestorage.app",
+  messagingSenderId: "1059321382786",
+  appId: "1:1059321382786:web:1e42e1daa4d639fb92719b",
+  measurementId: "G-6SSJPWD3T5"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const overlay = document.getElementById("authOverlay");
+const form = document.getElementById("authForm");
+const message = document.getElementById("message");
+const registerFields = document.getElementById("registerFields");
+const loginLinks = document.getElementById("loginLinks");
+const registerLinks = document.getElementById("registerLinks");
+const submitButton = document.getElementById("submitButton");
+
+let mode = "login";
+
+function showMessage(text) {
+  message.textContent = text;
+}
+
+function setMode(nextMode) {
+  mode = nextMode;
+
+  const registering = mode === "register";
+
+  document.getElementById("authTitle").textContent =
+    registering ? "CRIAR CONTA" : "ENTRAR NA ULTRA PLAY";
+
+  document.getElementById("authSubtitle").textContent =
+    registering ? "Preencha seus dados para se cadastrar" : "Acesse sua conta";
+
+  registerFields.classList.toggle("hidden", !registering);
+  loginLinks.classList.toggle("hidden", registering);
+  registerLinks.classList.toggle("hidden", !registering);
+
+  submitButton.textContent = registering ? "CADASTRAR" : "ENTRAR";
+
+  showMessage("");
+}
+
+document.getElementById("openLogin").onclick = () => {
+  overlay.classList.add("open");
+  setMode("login");
+};
+
+document.getElementById("closeAuth").onclick = () => {
+  overlay.classList.remove("open");
+};
+
+document.getElementById("showRegister").onclick = () => {
+  setMode("register");
+};
+
+document.getElementById("showLogin").onclick = () => {
+  setMode("login");
+};
+
+document.getElementById("forgotPassword").onclick = async () => {
+  const email = document.getElementById("email").value.trim();
+
+  if (!email) {
+    showMessage("Digite seu e-mail para recuperar sua senha.");
+    return;
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, email);
+    showMessage("Se o e-mail estiver cadastrado, você receberá as instruções.");
+  } catch {
+    showMessage("Não foi possível enviar. Confira o e-mail e tente novamente.");
+  }
+};
+
+form.onsubmit = async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  submitButton.disabled = true;
+  submitButton.textContent = "AGUARDE...";
+
+  try {
+    if (mode === "register") {
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+
+      if (!firstName || !lastName) {
+        throw new Error("Informe seu nome e sobrenome.");
+      }
+
+      const credential = await createUserWithEmailAndPassword(
+        auth, email, password
+      );
+
+      await updateProfile(credential.user, {
+        displayName: `${firstName} ${lastName}`
+      });
+
+      showMessage("Cadastro realizado com sucesso!");
+      form.reset();
+
+    } else {
+      await signInWithEmailAndPassword(auth, email, password);
+
+      showMessage("Login realizado com sucesso!");
+    }
+
+  } catch (error) {
+    const errors = {
+      "auth/email-already-in-use": "Este e-mail já está cadastrado.",
+      "auth/invalid-email": "Digite um e-mail válido.",
+      "auth/weak-password": "A senha precisa ter pelo menos 6 caracteres.",
+      "auth/invalid-credential": "E-mail ou senha incorretos.",
+      "auth/user-not-found": "Conta não encontrada.",
+      "auth/too-many-requests": "Muitas tentativas. Aguarde e tente novamente."
+    };
+
+    showMessage(errors[error.code] || error.message || "Não foi possível concluir.");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = mode === "register" ? "CADASTRAR" : "ENTRAR";
+  }
+};
+</script>
+
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -20,9 +351,9 @@ header{position:sticky;top:0;z-index:10;background:#090303ed;border-bottom:1px s
 .nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
 .logo{font-size:29px;font-weight:1000;font-style:italic;letter-spacing:-2px;text-shadow:0 0 15px red}
 .logo span{color:var(--red)}
-nav{display:flex;gap:20px}
-nav a{font-size:12px;font-weight:bold}
-nav a:hover{color:var(--red)}
+.hero-menu{display:flex;justify-content:center;gap:24px;margin:0 auto 24px;flex-wrap:wrap}
+.hero-menu a{font-size:12px;font-weight:bold;letter-spacing:1px;padding:10px 14px;border:1px solid #ff333355;border-radius:7px;background:#160505aa;transition:.2s}
+.hero-menu a:hover{color:var(--red);border-color:var(--red);box-shadow:0 0 14px #ff171744}
 .hero{min-height:570px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:75px 15px;overflow:hidden}
 .hero:before{content:"";position:absolute;width:460px;height:460px;border-radius:50%;background:#ff000025;filter:blur(90px);animation:pulse 4s infinite alternate}
 @keyframes pulse{to{transform:scale(1.3);opacity:.5}}
@@ -79,30 +410,48 @@ nav a:hover{color:var(--red)}
 .wa:hover{transform:scale(1.1)}
 .wa svg{width:36px;height:36px;fill:white}
 footer{text-align:center;padding:28px;color:#887777;font-size:12px}
-@media(max-width:750px){.features{grid-template-columns:repeat(2,1fr)}.catalog{grid-template-columns:repeat(2,1fr)}.plans{grid-template-columns:1fr}.plan.popular{transform:none}nav{gap:10px}.hero h1{letter-spacing:-4px}}
-@media(max-width:420px){.logo{font-size:22px}nav{gap:8px}nav a{font-size:10px}.poster{min-height:180px}}
+@media(max-width:750px){
+.features{grid-template-columns:repeat(2,1fr)}
+.catalog{grid-template-columns:repeat(2,1fr)}
+.plans{grid-template-columns:1fr}
+.plan.popular{transform:none}
+.hero-menu{gap:9px}
+.hero-menu a{font-size:11px;padding:9px 10px}
+.hero h1{letter-spacing:-4px}
+}
+@media(max-width:420px){
+.logo{font-size:22px}
+.hero-menu{gap:6px}
+.hero-menu a{font-size:10px;padding:8px}
+.poster{min-height:180px}
+}
 </style>
 </head>
 <body>
+
 <header>
  <div class="container nav">
   <a href="#inicio" class="logo">ULTRA <span>PLAY</span></a>
-  <nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+ <div class="hero-content">
+
+  <nav class="hero-menu" aria-label="Menu principal">
    <a href="#catalogo">CATÁLOGO</a>
    <a href="#planos">PLANOS</a>
    <a href="#teste">TESTE GRÁTIS</a>
   </nav>
- </div>
-</header>
-<main>
-<section class="hero" id="inicio">
- <div class="hero-content">
+
   <div class="tag">ENTRETENIMENTO PREMIUM</div>
   <h1><span class="white">ULTRA</span><br><span class="red">PLAY</span></h1>
   <p>Seu entretenimento em um só lugar! Filmes, séries, canais ao vivo, esportes e muito mais para aproveitar.</p>
   <a href="#planos" class="btn">DESCUBRA NOSSOS PLANOS →</a>
  </div>
 </section>
+
 <section class="section container">
  <div class="heading">
   <small>EXPERIÊNCIA COMPLETA</small>
@@ -118,64 +467,66 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
   <div class="feature"><div class="emoji">✨</div><h3>Muito mais</h3><p>Entretenimento para todos.</p></div>
  </div>
 </section>
+
 <section class="section container" id="catalogo">
  <div class="heading">
   <small>ESCOLHA O QUE ASSISTIR</small>
   <h2>DESTAQUES DO <span>CATÁLOGO</span></h2>
   <p>Conheça as categorias disponíveis na ULTRA PLAY.</p>
  </div>
- 
-<div class="catalog">
+
+ <div class="catalog">
 
   <!-- FILMES -->
   <div class="poster" style="background-image: linear-gradient(to top, #000 5%, transparent 90%), url('https://images.hitpaw.com/topics/video-converter/top-gun-maverick-hd-movie.jpg'); background-size:cover;background-position:center;">
-    <div><small>ULTRA PLAY</small><h3>FILMES</h3></div>
+   <div><small>ULTRA PLAY</small><h3>FILMES</h3></div>
   </div>
 
   <!-- SÉRIES -->
   <div class="poster" style="background-image: linear-gradient(to top, #000 5%, transparent 90%), url('https://preview.redd.it/please-recommend-me-some-good-tv-series-v0-bti4zwzgziac1.jpeg?width=640&crop=smart&auto=webp&s=9c2383925918b0893340b93f1e262d3da4ad89fb'); background-size:cover;background-position:center;">
-    <div><small>ULTRA PLAY</small><h3>SÉRIES</h3></div>
+   <div><small>ULTRA PLAY</small><h3>SÉRIES</h3></div>
   </div>
 
   <!-- AÇÃO -->
   <div class="poster" style="background-image: linear-gradient(to top, #000 5%, transparent 90%), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqnpdKsUxoJ_3I3LW2gcTWYM6qJC3ZoRglr9xR9AlSqvlaNbgHw4RRajs&s=10'); background-size:cover;background-position:center;">
-    <div><small>ULTRA PLAY</small><h3>AÇÃO</h3></div>
+   <div><small>ULTRA PLAY</small><h3>AÇÃO</h3></div>
   </div>
 
   <!-- AVENTURA -->
   <div class="poster" style="background-image: linear-gradient(to top, #000 5%, transparent 90%), url('https://m.media-amazon.com/images/S/pv-target-images/a467ea6d8fe01ac19fc24803814832d989a9a367f4ee4dbec23a89cd22f38b78.jpg'); background-size:cover;background-position:center;">
-    <div><small>ULTRA PLAY</small><h3>AVENTURA</h3></div>
+   <div><small>ULTRA PLAY</small><h3>AVENTURA</h3></div>
   </div>
 
   <!-- DRAMA -->
   <div class="poster" style="background-image: linear-gradient(to top, #000 5%, transparent 90%), url('https://m.media-amazon.com/images/M/MV5BZTA5MTBiNzctM2Y0Mi00OGRjLWJiMTAtOGQ4MWE2YmFlNzI1XkEyXkFqcGc@._V1_.jpg'); background-size:cover;background-position:center;">
-    <div><small>ULTRA PLAY</small><h3>DRAMA</h3></div>
+   <div><small>ULTRA PLAY</small><h3>DRAMA</h3></div>
   </div>
 
   <!-- COMÉDIA -->
   <div class="poster" style="background-image: linear-gradient(to top, #000 5%, transparent 90%), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMEAj6_e8UJU8OfnOHTKuRGv931MoLIozzt89hoLlszQ&s=10'); background-size:cover;background-position:center;">
-    <div><small>ULTRA PLAY</small><h3>COMÉDIA</h3></div>
+   <div><small>ULTRA PLAY</small><h3>COMÉDIA</h3></div>
   </div>
 
   <!-- ESPORTES -->
   <div class="poster" style="background-image: linear-gradient(to top, #000 5%, transparent 90%), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRsIJrpsRBwB9y1HXuupApicqBKPzfH1-_huCu4QklsGEp4nfXtLeyj-Y&s=10'); background-size:cover;background-position:center;">
-    <div><small>ULTRA PLAY</small><h3>ESPORTES</h3></div>
+   <div><small>ULTRA PLAY</small><h3>ESPORTES</h3></div>
   </div>
 
   <!-- INFANTIL -->
   <div class="poster" style="background-image: linear-gradient(to top, #000 5%, transparent 90%), url('https://m.media-amazon.com/images/S/pv-target-images/9274fb9d593f24c8acc87e40ef242b8b380f19e2a8ccea67a7e9fa71074e20e4.jpg'); background-size:cover;background-position:center;">
-    <div><small>ULTRA PLAY</small><h3>INFANTIL</h3></div>
+   <div><small>ULTRA PLAY</small><h3>INFANTIL</h3></div>
   </div>
 
-</div>
-
+ </div>
 </section>
+
 <section class="section container" id="planos">
  <div class="heading">
   <small>ESCOLHA SUA EXPERIÊNCIA</small>
   <h2>NOSSOS <span>PLANOS</span></h2>
   <p>Escolha a opção ideal para você.</p>
  </div>
+
  <div class="plans">
   <div class="plan">
    <div class="label">PLANO INDIVIDUAL</div>
@@ -184,6 +535,7 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
    <p>Acesso para 1 tela</p>
    <a class="btn" href="https://wa.me/5511915145364?text=Ol%C3%A1%2C%20boa%20noite%21%20Gostaria%20de%20assinar%20esse%20plano%20de%2030%20reais.">ASSINAR AGORA</a>
   </div>
+
   <div class="plan popular">
    <div class="label">⭐ MAIS ESCOLHIDO</div>
    <h3>2 TELAS</h3>
@@ -191,6 +543,7 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
    <p>Acesso para 2 telas</p>
    <a class="btn" href="https://wa.me/5511915145364?text=Ol%C3%A1%2C%20boa%20noite%21%20Gostaria%20de%20assinar%20esse%20plano%20de%2050%20reais.">ASSINAR AGORA</a>
   </div>
+
   <div class="plan">
    <div class="label">PLANO COMPLETO</div>
    <h3>3 TELAS</h3>
@@ -199,12 +552,14 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
    <a class="btn" href="https://wa.me/5511915145364?text=Ol%C3%A1%2C%20boa%20noite%21%20Gostaria%20de%20assinar%20esse%20plano%20de%2070%20reais.">ASSINAR AGORA</a>
   </div>
  </div>
+
  <div class="trial" id="teste">
   <h2>🎁 EXPERIMENTE GRÁTIS!</h2>
   <p>Peça seu teste gratuito de 6 horas e conheça a ULTRA PLAY.</p>
   <a class="btn" href="https://wa.me/5511915145364?text=Ol%C3%A1%21%20Gostaria%20de%20fazer%20o%20teste%20gr%C3%A1tis%20de%20seis%20horas.%20Como%20funciona%3F">QUERO MEU TESTE GRÁTIS</a>
  </div>
 </section>
+
 <section class="section container">
  <div class="contact">
   <h2>VEM PARA A <span>ULTRA PLAY</span></h2>
@@ -213,11 +568,13 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
  </div>
 </section>
 </main>
+
 <a class="wa" href="https://wa.me/5511915145364" target="_blank" rel="noopener" aria-label="WhatsApp">
  <svg viewBox="0 0 32 32">
-  <path d="M16 .8A15 15 0 0 0 3.1 23.4L1 31l7.8-2A15 15 0 1 0 16 .8zm0 27.5a12.4 12.4 0 0 1-6.3-1.7l-.5-.3-4.6 1.2 1.2-4.5-.3-.5A12.4 12.4 0 1 1 16 28.3zm6.8-9.3c-.4-.2-2.3-1.1-2.7-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/>
+  <path d="M16 .8A15 15 0 0 0 3.1 23.4L1 31l7.8-2A15 15 0 1 0 16 .8zm0 27.5a12.4 12.4 0 0 1-6.3-1.7l-.5-.3-4.6 1.2 1.2-4.5-.3-.5A12.4 12.4 0 1 1 16 28.3zm6.8-9.3c-.4-.2-2.3-1.1-2.7-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.3.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/>
  </svg>
 </a>
+
 <footer>© 2026 ULTRA PLAY — Todos os direitos reservados.</footer>
 </body>
 </html>
