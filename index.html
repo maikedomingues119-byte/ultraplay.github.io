@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0071)file:///C:/Users/maike/Downloads/ultraplay_natal_mais_chamativo(1).html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080303">
 <title>ULTRA PLAY | Premium</title>
@@ -119,13 +119,137 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
 .poster{min-height:180px}
 .account-name{max-width:75px}
 }
+
+/* ===== EDIÇÃO ESPECIAL DE NATAL ULTRA PLAY ===== */
+.hero{
+ min-height:680px;
+ isolation:isolate;
+ background:
+  radial-gradient(ellipse at 50% 18%,rgba(255,220,130,.20),transparent 27%),
+  linear-gradient(180deg,rgba(3,18,13,.35),rgba(4,5,8,.82) 72%,#080303);
+ border-bottom:1px solid rgba(255,210,100,.35);
+}
+.hero:after{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background:
+  linear-gradient(90deg,rgba(0,0,0,.62),transparent 28%,transparent 72%,rgba(0,0,0,.62)),
+  radial-gradient(ellipse at 50% 100%,rgba(16,75,48,.38),transparent 58%);
+}
+.hero-content{z-index:4;max-width:900px}
+.hero-menu a{border-color:#e6bd5c88;background:rgba(5,24,17,.82);color:#fff2cf}
+.hero-menu a:hover{color:#ffe39a;border-color:#ffe39a;box-shadow:0 0 18px #ffcf5a88}
+.tag{
+ color:#ffe8a6;border-color:#e8bd58;background:linear-gradient(90deg,#5b1111cc,#143b28cc);
+ box-shadow:0 0 24px #d7a63a44;letter-spacing:3px
+}
+.hero h1 .red{
+ color:#ff3434;
+ text-shadow:0 0 12px #ff2222,0 0 35px #ff1717,3px 4px 0 #681010;
+}
+.hero h1 .white{text-shadow:0 0 20px #fff,0 0 48px #d8e8ff}
+.hero p{
+ color:#fff1d5;text-shadow:0 2px 8px #000;
+}
+.hero .btn{
+ background:linear-gradient(115deg,#b20e19,#e52b25 48%,#9a6717);
+ border:1px solid #ffe19a;color:#fff;
+ box-shadow:0 0 18px #e7b64b88,0 0 42px #c91d1d55;
+}
+.hero .btn:hover{box-shadow:0 0 30px #ffd56b,0 0 55px #e31c2b}
+.christmas-scene{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.moon-glow{
+ position:absolute;width:210px;height:210px;right:17%;top:13%;border-radius:50%;
+ background:radial-gradient(circle,#fff5cf 0 5%,#ffe8a4 8%,rgba(255,220,130,.25) 38%,transparent 70%);
+ filter:blur(2px);opacity:.8
+}
+.moon-glow:after{content:"";position:absolute;inset:35px;border-radius:50%;box-shadow:0 0 65px 28px #ffe8a455}
+.tree{
+ position:absolute;bottom:28px;width:190px;height:360px;
+ background:linear-gradient(145deg,#1c7047,#073321 65%,#041b14);
+ clip-path:polygon(50% 0,62% 19%,57% 19%,76% 42%,66% 40%,94% 69%,63% 65%,80% 88%,20% 88%,37% 65%,6% 69%,34% 40%,24% 42%,43% 19%,38% 19%);
+ filter:drop-shadow(0 0 16px #1b8a55aa);
+}
+.tree:before{
+ content:"";position:absolute;inset:12% 20%;
+ background:repeating-linear-gradient(155deg,transparent 0 28px,#d8b45c 29px 31px,transparent 32px 47px);
+ opacity:.85
+}
+.tree:after{
+ content:"";position:absolute;inset:20% 25%;
+ background:
+ radial-gradient(circle at 20% 18%,#ffdf70 0 4px,transparent 5px),
+ radial-gradient(circle at 70% 30%,#e92c36 0 5px,transparent 6px),
+ radial-gradient(circle at 40% 48%,#ffe28a 0 4px,transparent 5px),
+ radial-gradient(circle at 78% 66%,#e92c36 0 5px,transparent 6px),
+ radial-gradient(circle at 25% 78%,#ffe28a 0 4px,transparent 5px);
+}
+.tree span{position:absolute;top:-17px;left:calc(50% - 15px);font-size:34px;color:#ffe58b;text-shadow:0 0 18px #ffdf75}
+.tree-left{left:-25px;transform:scale(.92);transform-origin:bottom left}
+.tree-right{right:-25px;transform:scale(.78);transform-origin:bottom right}
+.ground-snow{
+ position:absolute;bottom:-75px;left:-5%;width:110%;height:130px;border-radius:50%;
+ background:linear-gradient(#eff8ff,#b8d2dc 60%,#6d9291);
+ box-shadow:0 -8px 35px #d9f3ff55
+}
+.christmas-lights{
+ position:absolute;z-index:5;top:0;left:-2%;width:104%;height:52px;
+ border-top:3px solid #253b2d;border-radius:0 0 50% 50%;
+}
+.christmas-lights:before{
+ content:"";position:absolute;left:0;right:0;top:-3px;height:38px;
+ border-bottom:2px solid #314d38;border-radius:0 0 50% 50%
+}
+.christmas-lights i{
+ position:relative;display:inline-block;width:13px;height:18px;margin:0 2.65%;
+ border-radius:45% 45% 50% 50%;top:20px;background:#ffdf72;
+ box-shadow:0 0 10px 4px #ffdf7288;animation:bulbGlow 1.8s infinite alternate
+}
+.christmas-lights i:nth-child(3n){background:#ff3547;box-shadow:0 0 12px 4px #ff354788;animation-delay:.5s}
+.christmas-lights i:nth-child(3n + 1){background:#69e6a0;box-shadow:0 0 12px 4px #69e6a088;animation-delay:1s}
+@keyframes bulbGlow{from{filter:brightness(.72);transform:scale(.88)}to{filter:brightness(1.35);transform:scale(1.08)}}
+.snow{
+ position:absolute;inset:-100% 0 0;opacity:.65;
+ background-image:
+  radial-gradient(3px 3px at 20px 30px,#fff 98%,transparent),
+  radial-gradient(2px 2px at 80px 120px,#fff 98%,transparent),
+  radial-gradient(2px 2px at 150px 70px,#dff5ff 98%,transparent),
+  radial-gradient(3px 3px at 220px 180px,#fff 98%,transparent);
+ background-size:260px 220px;animation:snowFall 18s linear infinite
+}
+.snow-two{opacity:.4;background-size:190px 170px;animation-duration:25s;animation-delay:-8s;filter:blur(1px)}
+.snow-three{opacity:.22;background-size:330px 280px;animation-duration:32s;animation-delay:-14s}
+@keyframes snowFall{to{transform:translateY(100%)}}
+.sleigh{position:absolute;top:16%;left:-190px;font-size:35px;opacity:.7;filter:drop-shadow(0 0 10px #ffe6a2);animation:sleighRide 24s linear infinite}
+.sleigh span{font-size:23px}
+@keyframes sleighRide{0%{transform:translateX(0) translateY(0)}45%{transform:translateX(65vw) translateY(-22px)}100%{transform:translateX(125vw) translateY(8px)}}
+.section .heading small{color:#f2c65f}
+.feature,.poster,.plan,.trial,.contact{border-color:#b98b3d66}
+.feature{background:linear-gradient(145deg,#153b2a,#0b1712 65%,#27080a)}
+.feature:hover{border-color:#f3c65b;box-shadow:0 0 24px #e5b64a44}
+.plan.popular{border-color:#f2c65f;box-shadow:0 0 28px #e5b64a55}
+.plan .label,.price{color:#ffdc82}
+.trial{background:linear-gradient(120deg,#17462e,#4b0808 72%,#170303);border-color:#e8bd58}
+.contact{background:radial-gradient(ellipse,#16472e,#100303 78%);border-color:#b98b3d88}
+footer{border-top:1px solid #b98b3d55;background:linear-gradient(90deg,#07140e,#170606,#07140e)}
+@media(max-width:750px){
+ .hero{min-height:620px;padding-top:90px}
+ .tree{width:120px;height:245px;opacity:.7}
+ .tree-left{left:-30px}.tree-right{right:-30px}
+ .moon-glow{right:7%;top:16%;width:140px;height:140px}
+ .sleigh{top:12%;font-size:25px}
+ .christmas-lights i{margin-left:2.1%;margin-right:2.1%;width:10px;height:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ .snow,.sleigh,.christmas-lights i{animation:none!important}
+}
+
 </style>
 </head>
 
 <body>
 <header>
  <div class="container nav">
-  <a href="#inicio" class="logo">ULTRA <span>PLAY</span></a>
+  <a href="file:///C:/Users/maike/Downloads/ultraplay_natal_mais_chamativo(1).html#inicio" class="logo">ULTRA <span>PLAY</span></a>
   <div id="accountArea" class="account-area">
    <button class="login-trigger" id="openLogin" type="button">ENTRAR</button>
   </div>
@@ -134,16 +258,26 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
 
 <main>
 <section class="hero" id="inicio">
+ <div class="christmas-scene" aria-hidden="true">
+  <div class="christmas-lights"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="snow snow-one"></div><div class="snow snow-two"></div><div class="snow snow-three"></div>
+  <div class="moon-glow"></div>
+  <div class="tree tree-left"><span>✦</span></div>
+  <div class="tree tree-right"><span>✦</span></div>
+  <div class="gift gift-left"></div><div class="gift gift-right"></div>
+  <div class="sleigh">🛷 <span>🦌 🦌</span></div>
+  <div class="ground-snow"></div>
+ </div>
  <div class="hero-content">
   <nav class="hero-menu" aria-label="Menu principal">
-   <a href="#catalogo">CATÁLOGO</a>
-   <a href="#planos">PLANOS</a>
-   <a href="#teste">TESTE GRÁTIS</a>
+   <a href="file:///C:/Users/maike/Downloads/ultraplay_natal_mais_chamativo(1).html#catalogo">CATÁLOGO</a>
+   <a href="file:///C:/Users/maike/Downloads/ultraplay_natal_mais_chamativo(1).html#planos">PLANOS</a>
+   <a href="file:///C:/Users/maike/Downloads/ultraplay_natal_mais_chamativo(1).html#teste">TESTE GRÁTIS</a>
   </nav>
   <div class="tag">ENTRETENIMENTO PREMIUM</div>
   <h1><span class="white">ULTRA</span><br><span class="red">PLAY</span></h1>
   <p>Seu entretenimento em um só lugar! Filmes, séries, canais ao vivo, esportes e muito mais para aproveitar.</p>
-  <a href="#planos" class="btn">DESCUBRA NOSSOS PLANOS →</a>
+  <a href="file:///C:/Users/maike/Downloads/ultraplay_natal_mais_chamativo(1).html#planos" class="btn">DESCUBRA NOSSOS PLANOS →</a>
  </div>
 </section>
 
@@ -171,12 +305,12 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
  </div>
  <div class="catalog">
   <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://images.hitpaw.com/topics/video-converter/top-gun-maverick-hd-movie.jpg');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>FILMES</h3></div></div>
-  <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://preview.redd.it/please-recommend-me-some-good-tv-series-v0-bti4zwzgziac1.jpeg?width=640&crop=smart&auto=webp&s=9c2383925918b0893340b93f1e262d3da4ad89fb');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>SÉRIES</h3></div></div>
-  <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqnpdKsUxoJ_3I3LW2gcTWYM6qJC3ZoRglr9xR9AlSqvlaNbgHw4RRajs&s=10');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>AÇÃO</h3></div></div>
+  <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://preview.redd.it/please-recommend-me-some-good-tv-series-v0-bti4zwzgziac1.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=9c2383925918b0893340b93f1e262d3da4ad89fb');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>SÉRIES</h3></div></div>
+  <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqnpdKsUxoJ_3I3LW2gcTWYM6qJC3ZoRglr9xR9AlSqvlaNbgHw4RRajs&amp;s=10');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>AÇÃO</h3></div></div>
   <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://m.media-amazon.com/images/S/pv-target-images/a467ea6d8fe01ac19fc24803814832d989a9a367f4ee4dbec23a89cd22f38b78.jpg');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>AVENTURA</h3></div></div>
   <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://m.media-amazon.com/images/M/MV5BZTA5MTBiNzctM2Y0Mi00OGRjLWJiMTAtOGQ4MWE2YmFlNzI1XkEyXkFqcGc@._V1_.jpg');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>DRAMA</h3></div></div>
-  <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMEAj6_e8UJU8OfnOHTKuRGv931MoLIozzt89hoLlszQ&s=10');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>COMÉDIA</h3></div></div>
-  <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRsIJrpsRBwB9y1HXuupApicqBKPzfH1-_huCu4QklsGEp4nfXtLeyj-Y&s=10');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>ESPORTES</h3></div></div>
+  <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMEAj6_e8UJU8OfnOHTKuRGv931MoLIozzt89hoLlszQ&amp;s=10');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>COMÉDIA</h3></div></div>
+  <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRsIJrpsRBwB9y1HXuupApicqBKPzfH1-_huCu4QklsGEp4nfXtLeyj-Y&amp;s=10');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>ESPORTES</h3></div></div>
   <div class="poster" style="background-image:linear-gradient(to top,#000 5%,transparent 90%),url('https://m.media-amazon.com/images/S/pv-target-images/9274fb9d593f24c8acc87e40ef242b8b380f19e2a8ccea67a7e9fa71074e20e4.jpg');background-size:cover;background-position:center"><div><small>ULTRA PLAY</small><h3>INFANTIL</h3></div></div>
  </div>
 </section>
@@ -228,7 +362,7 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
 
 <a class="wa" href="https://wa.me/5511915145364" target="_blank" rel="noopener" aria-label="WhatsApp">
  <svg viewBox="0 0 32 32">
-  <path d="M16 .8A15 15 0 0 0 3.1 23.4L1 31l7.8-2A15 15 0 1 0 16 .8zm0 27.5a12.4 12.4 0 0 1-6.3-1.7l-.5-.3-4.6 1.2 1.2-4.5-.3-.5A12.4 12.4 0 1 1 16 28.3zm6.8-9.3c-.4-.2-2.3-1.1-2.7-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.3.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/>
+  <path d="M16 .8A15 15 0 0 0 3.1 23.4L1 31l7.8-2A15 15 0 1 0 16 .8zm0 27.5a12.4 12.4 0 0 1-6.3-1.7l-.5-.3-4.6 1.2 1.2-4.5-.3-.5A12.4 12.4 0 1 1 16 28.3zm6.8-9.3c-.4-.2-2.3-1.1-2.7-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.3.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"></path>
  </svg>
 </a>
 
@@ -252,10 +386,10 @@ footer{text-align:center;padding:28px;color:#887777;font-size:12px}
    </div>
 
    <label for="email">E-mail</label>
-   <input id="email" type="email" required autocomplete="email">
+   <input id="email" type="email" required="" autocomplete="email">
 
    <label for="password">Senha</label>
-   <input id="password" type="password" minlength="6" required autocomplete="current-password">
+   <input id="password" type="password" minlength="6" required="" autocomplete="current-password">
 
    <button class="auth-submit" id="submitButton" type="submit">ENTRAR</button>
   </form>
@@ -463,5 +597,6 @@ onAuthStateChanged(auth, user => {
  }
 });
 </script>
-</body>
-</html>
+
+
+</body></html>
